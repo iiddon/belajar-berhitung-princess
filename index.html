@@ -19,11 +19,15 @@
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;height:100%}
+:root{--vh:1dvh;--vw:1vw}
+html.fit,html.fit body{overflow:hidden;background:#F6E6FF;background-image:radial-gradient(circle at 20% 30%,#fff 0 3px,transparent 4px),radial-gradient(circle at 70% 70%,#FFD6EC 0 3px,transparent 4px);background-size:90px 90px}
+html.fit .nav{max-width:none!important}
+html.fit #app{position:absolute;left:0;top:0;max-width:none!important;margin:0!important;transform-origin:0 0;box-shadow:none}
 body{font-family:'Baloo 2',system-ui,sans-serif;color:var(--ink);background:#E9F7FF;overscroll-behavior:none}
 button,input{font-family:inherit;color:inherit}
 button{cursor:pointer;border:none;background:none;padding:0}
-#app{max-width:480px;margin:0 auto;height:100vh;height:100dvh;overflow:hidden;position:relative;background:var(--cream);overflow-x:hidden;box-shadow:0 0 40px rgba(0,60,100,.12)}
-.screen{height:100vh;height:100dvh;display:flex;flex-direction:column;padding-bottom:calc(78px + env(safe-area-inset-bottom));overflow-y:auto;overflow-x:hidden}
+#app{max-width:480px;margin:0 auto;height:calc(100*var(--vh));height:calc(100*var(--vh));overflow:hidden;position:relative;background:var(--cream);overflow-x:hidden;box-shadow:0 0 40px rgba(0,60,100,.12)}
+.screen{height:calc(100*var(--vh));height:calc(100*var(--vh));display:flex;flex-direction:column;padding-bottom:calc(78px + env(safe-area-inset-bottom));overflow-y:auto;overflow-x:hidden}
 .screen.nonav{padding-bottom:0}
 .grow{flex:1 1 auto;min-height:0}
 .bg-sea{background:var(--sea)} .bg-grass{background:var(--grass)} .bg-yellow{background:#FFD66B}
@@ -34,7 +38,7 @@ button{cursor:pointer;border:none;background:none;padding:0}
 .titlebox{flex:1;background:#fff;border-radius:18px;padding:4px 14px;box-shadow:0 3px 0 var(--sh,#EBD7A8);min-width:0}
 .titlebox b{display:block;font-size:19px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .titlebox small{display:block;font-size:13px;font-weight:700;color:var(--ink2);line-height:1.2}
-.btn{display:flex;align-items:center;justify-content:center;gap:8px;height:clamp(48px,6.6dvh,58px);min-height:clamp(48px,6.6dvh,58px);min-width:0;border-radius:20px;font-size:21px;font-weight:800;width:100%;text-decoration:none}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;height:clamp(48px,calc(6.6*var(--vh)),58px);min-height:clamp(48px,calc(6.6*var(--vh)),58px);min-width:0;border-radius:20px;font-size:21px;font-weight:800;width:100%;text-decoration:none}
 .btn-green{background:var(--green);color:#fff;box-shadow:0 6px 0 var(--green-d);text-shadow:0 1px 0 #1E6A21}
 .btn-orange{background:var(--orange);color:#3B1A05;box-shadow:0 6px 0 var(--orange-d)}
 .btn-white{background:#fff;color:var(--ink);box-shadow:0 5px 0 var(--line)}
@@ -74,11 +78,11 @@ button{cursor:pointer;border:none;background:none;padding:0}
 .track .walker{position:absolute;top:0;transition:left .6s cubic-bezier(.3,1.4,.6,1)}
 .qcard{margin:12px 14px 0;background:#fff;border-radius:26px;padding:12px 14px;flex:1 1 auto;min-height:0;justify-content:center;overflow:auto;box-shadow:0 6px 0 var(--line);display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
 .qtext{font-size:18px;font-weight:700;color:var(--ink);line-height:1.3}
-.expr{font-size:clamp(34px,5.6dvh,48px);font-weight:800;line-height:1.05;letter-spacing:1px;word-break:break-word}
+.expr{font-size:clamp(34px,calc(5.6*var(--vh)),48px);font-weight:800;line-height:1.05;letter-spacing:1px;word-break:break-word}
 .expr .blank{display:inline-block;min-width:62px;border-bottom:5px dashed var(--orange);color:var(--orange-d);text-align:center}
-.expr.small{font-size:clamp(28px,4.4dvh,38px)}
+.expr.small{font-size:clamp(28px,calc(4.4*var(--vh)),38px)}
 .opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px 14px 0;flex-shrink:0}
-.opt{height:clamp(56px,8.6dvh,80px);border-radius:22px;font-size:clamp(28px,4.4dvh,36px);font-weight:800;background:#fff;border:3px solid var(--line);box-shadow:0 6px 0 var(--line);color:var(--ink)}
+.opt{height:clamp(56px,calc(8.6*var(--vh)),80px);border-radius:22px;font-size:clamp(28px,calc(4.4*var(--vh)),36px);font-weight:800;background:#fff;border:3px solid var(--line);box-shadow:0 6px 0 var(--line);color:var(--ink)}
 .opt.ok{background:#C9F2C7;border-color:var(--green-d);box-shadow:0 6px 0 var(--green-d);color:#133D12;animation:pop .35s}
 .opt.bad{background:#FFD0D6;border-color:var(--red-d);box-shadow:0 6px 0 var(--red-d);color:#4A1019;animation:shake .4s}
 .opt.dim{opacity:.45}
@@ -93,7 +97,7 @@ button{cursor:pointer;border:none;background:none;padding:0}
 .vis{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center}
 .vis .grp{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;max-width:150px}
 .vis .op{font-size:34px;font-weight:800;padding:0 4px}
-.obj{width:clamp(22px,3.3dvh,28px);height:clamp(22px,3.3dvh,28px);position:relative;display:inline-block}
+.obj{width:clamp(22px,calc(3.3*var(--vh)),28px);height:clamp(22px,calc(3.3*var(--vh)),28px);position:relative;display:inline-block}
 .obj svg{width:100%;height:100%}
 .obj.gone{opacity:.3}
 .obj.gone::after{content:"";position:absolute;left:-2px;right:-2px;top:12px;height:4px;background:var(--red-d);transform:rotate(-40deg);border-radius:2px}
@@ -119,7 +123,7 @@ button{cursor:pointer;border:none;background:none;padding:0}
 .row-card{display:flex;align-items:center;gap:14px;padding:14px;border-radius:24px;text-align:left;width:100%}
 .badge{width:58px;height:58px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:800;flex-shrink:0}
 .grid-stk{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;padding:6px 14px 10px;align-content:start;flex:1 1 auto;min-height:0;overflow-y:auto}
-.stk{aspect-ratio:1;border-radius:14px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:clamp(20px,3.6dvh,30px);box-shadow:0 4px 0 var(--line)}
+.stk{aspect-ratio:1;border-radius:14px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:clamp(20px,calc(3.6*var(--vh)),30px);box-shadow:0 4px 0 var(--line)}
 .stk.locked{background:#F1E9D6;box-shadow:none;color:#B9AC94}
 .stk.new{animation:pop .6s 3}
 input.txt{width:100%;height:50px;border-radius:18px;border:3px solid var(--line);background:#fff;font-size:22px;font-weight:700;padding:0 16px;outline:none}
@@ -138,7 +142,7 @@ input.txt:focus{border-color:var(--orange)}
 .lane .who{position:absolute;right:40px;top:10px;font-size:13px;font-weight:800;color:#0B3B5A;opacity:.7}
 .timer{font-variant-numeric:tabular-nums}
 .confetti{position:fixed;top:-20px;width:10px;height:16px;border-radius:3px;z-index:99;animation:fall linear forwards;pointer-events:none}
-@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+@keyframes fall{to{transform:translateY(calc(110*var(--vh))) rotate(720deg)}}
 .modal-bg{position:fixed;inset:0;background:rgba(40,25,5,.45);display:flex;align-items:center;justify-content:center;z-index:200;padding:20px}
 .modal{background:#fff;border-radius:28px;padding:22px;max-width:360px;width:100%;text-align:center}
 .lesson-tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 16px 8px;scrollbar-width:none}
@@ -169,7 +173,7 @@ input.txt:focus{border-color:var(--orange)}
 .star-pop{display:inline-block;animation:starpop .5s cubic-bezier(.3,1.6,.5,1) both}
 @keyframes starpop{from{transform:scale(0) rotate(-90deg)}to{transform:scale(1) rotate(0)}}
 .chest-btn{position:relative;display:flex;align-items:center;justify-content:center;animation:wiggle 1.2s ease-in-out infinite}
-.chest-btn svg{max-height:min(130px,16dvh);width:auto}
+.chest-btn svg{max-height:min(130px,calc(16*var(--vh)));width:auto}
 .chest-btn.open{animation:none}
 .chest-btn.open .lid{transform-origin:20px 64px;animation:lidopen .6s forwards}
 @keyframes lidopen{to{transform:rotate(-28deg) translate(-6px,-14px)}}
@@ -207,15 +211,15 @@ input.txt:focus{border-color:var(--orange)}
 .rep-bar div.good{background:var(--green)}.rep-bar div.bad{background:var(--red)}.rep-bar div.mid{background:var(--yellow)}
 .mist{padding:8px 0;border-top:1px solid #EEE7D6}
 .mist:first-of-type{border-top:none}
-.toast{position:fixed;left:50%;bottom:110px;transform:translateX(-50%);background:#3B2A1A;color:#fff;font-weight:700;padding:10px 18px;border-radius:999px;z-index:300;max-width:90vw;text-align:center;animation:pop .3s;transition:opacity .4s}
+.toast{position:fixed;left:50%;bottom:110px;transform:translateX(-50%);background:#3B2A1A;color:#fff;font-weight:700;padding:10px 18px;border-radius:999px;z-index:300;max-width:calc(90*var(--vw));text-align:center;animation:pop .3s;transition:opacity .4s}
 .toast.out{opacity:0}
 textarea.txt.code{height:96px;font-size:13px;font-family:ui-monospace,monospace;padding:10px;resize:none;word-break:break-all}
-.modal{max-height:90dvh;overflow-y:auto}
+.modal{max-height:calc(90*var(--vh));overflow-y:auto}
 /* ---- v4: drag & drop, boss, missions, album, certificates ---- */
 [data-drag]{touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
 .ghost{box-shadow:0 10px 24px rgba(60,40,10,.3)!important;opacity:.95;transition:none}
 .locked{pointer-events:none}
-.wallet{width:100%;max-width:330px;min-height:min(150px,18dvh);border:4px dashed #C98A00;background:#FFF6DC;border-radius:24px;padding:8px 10px 10px;display:flex;flex-direction:column;gap:6px;transition:background .15s,transform .15s}
+.wallet{width:100%;max-width:330px;min-height:min(150px,calc(18*var(--vh)));border:4px dashed #C98A00;background:#FFF6DC;border-radius:24px;padding:8px 10px 10px;display:flex;flex-direction:column;gap:6px;transition:background .15s,transform .15s}
 .wallet.over{background:#FFE7A3;transform:scale(1.03);border-style:solid}
 .wallet-lbl{font-size:14px;font-weight:800;color:#6B4A00;text-align:left}
 .wallet-in{display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center;flex:1}
@@ -262,7 +266,7 @@ textarea.txt.code{height:96px;font-size:13px;font-family:ui-monospace,monospace;
 .album-h{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:16px}
 .album-h .muted{font-weight:700;font-size:14px}
 .album-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
-.album-grid .stk{font-size:clamp(22px,3.6dvh,30px);border-radius:14px}
+.album-grid .stk{font-size:clamp(22px,calc(3.6*var(--vh)),30px);border-radius:14px}
 .cert-row{background:#fff;box-shadow:0 4px 0 var(--line)}
 .shop-item.ex{background:#FFF4FA;border-color:#F2B8D6;border-style:dashed}
 .seg2{grid-template-columns:repeat(3,1fr)}
@@ -398,24 +402,24 @@ body{background:#F6E6FF}
 
 .trail{position:absolute;transform:translate(-50%,-50%);pointer-events:none;z-index:0;display:flex;filter:drop-shadow(0 1px 0 rgba(107,45,92,.35))}
 .map .island{z-index:1}
-canvas.trace{width:min(240px,62vw);height:min(220px,27dvh);background:#fff;border:3px dashed #E58AB8;border-radius:22px;touch-action:none;display:block;margin:0 auto}
+canvas.trace{width:min(240px,calc(62*var(--vw)));height:min(220px,calc(27*var(--vh)));background:#fff;border:3px dashed #E58AB8;border-radius:22px;touch-action:none;display:block;margin:0 auto}
 .qcard canvas.trace{flex-shrink:0}
 .opts.three{grid-template-columns:repeat(3,1fr)!important}
 .opts.three-wide .opt:last-child{grid-column:1/-1;width:calc(50% - 6px);justify-self:center}
 
 /* bigger questions */
-.qtext{font-size:clamp(20px,3dvh,26px)!important;font-weight:800!important;line-height:1.25!important}
-.vis .obj{width:clamp(36px,6dvh,54px)!important;height:clamp(36px,6dvh,54px)!important}
-.vis .obj .n{font-size:clamp(14px,2.2dvh,20px)!important;padding-top:4px}
+.qtext{font-size:clamp(20px,calc(3*var(--vh)),26px)!important;font-weight:800!important;line-height:1.25!important}
+.vis .obj{width:clamp(36px,calc(6*var(--vh)),54px)!important;height:clamp(36px,calc(6*var(--vh)),54px)!important}
+.vis .obj .n{font-size:clamp(14px,calc(2.2*var(--vh)),20px)!important;padding-top:4px}
 .vis .obj.gone::after{top:45%;height:5px}
 .vis{gap:10px}
-.vis .grp{max-width:min(320px,82vw)!important;gap:6px!important}
+.vis .grp{max-width:min(320px,calc(82*var(--vw)))!important;gap:6px!important}
 .vis:has(>.op){flex-wrap:nowrap!important;gap:6px}
-.vis .op+.grp,.vis .grp:has(+.op){max-width:min(138px,36vw)!important;gap:5px!important}
-.vis .op+.grp .obj,.vis .grp:has(+.op) .obj{width:clamp(32px,5dvh,42px)!important;height:clamp(32px,5dvh,42px)!important}
+.vis .op+.grp,.vis .grp:has(+.op){max-width:min(138px,calc(36*var(--vw)))!important;gap:5px!important}
+.vis .op+.grp .obj,.vis .grp:has(+.op) .obj{width:clamp(32px,calc(5*var(--vh)),42px)!important;height:clamp(32px,calc(5*var(--vh)),42px)!important}
 .vis .op{font-size:40px;padding:0 2px}
 .vis .op{font-size:44px}
-canvas.trace{width:min(300px,78vw)!important;height:min(300px,34dvh)!important}
+canvas.trace{width:min(300px,calc(78*var(--vw)))!important;height:min(300px,calc(34*var(--vh)))!important}
 
 .mission{padding:10px 12px!important;gap:12px!important}
 .m-t{font-size:18px!important;line-height:1.25!important}
@@ -425,7 +429,7 @@ canvas.trace{width:min(300px,78vw)!important;height:min(300px,34dvh)!important}
 .m-claim{font-size:17px!important;height:44px!important;padding:0 14px!important}
 .m-done svg{width:28px;height:28px}
 
-.stk-big{font-size:min(150px,36vw);line-height:1.1;animation:stkpop .45s cubic-bezier(.3,1.6,.5,1);filter:drop-shadow(0 6px 0 rgba(107,45,92,.15))}
+.stk-big{font-size:min(150px,calc(36*var(--vw)));line-height:1.1;animation:stkpop .45s cubic-bezier(.3,1.6,.5,1);filter:drop-shadow(0 6px 0 rgba(107,45,92,.15))}
 @keyframes stkpop{from{transform:scale(.3) rotate(-12deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
 button.stk{cursor:pointer;padding:0;font-family:inherit}
 button.stk:not(.locked):active{transform:scale(.92)}
@@ -846,20 +850,20 @@ function polaQ(lv){ const T=lv===8?pick(['ab','ab2','aab','abb','abc','num','gro
   const it=shuffle(PSET).slice(0,4); const [A,B,C]=it; let unit=T==='aab'?[A,A,B]:T==='abb'?[A,B,B]:T==='abc'?[A,B,C]:[A,B];
   const L=T==='ab'||T==='ab2'?5:unit.length===3?(T==='abc'?5:5):5; const seq=[]; for(let i=0;i<L+1;i++) seq.push(unit[i%unit.length]); const ans=seq[L];
   const opts=shuffle([...new Set([ans,...unit,it[3]])]).slice(0,lv<=2?3:4); if(!opts.includes(ans)) opts[0]=ans;
-  const row=seq.slice(0,L).map(e=>`<span style="font-size:clamp(30px,5.4dvh,46px);line-height:1">${e}</span>`).join('')+'<span class="blank" style="display:inline-flex;align-items:center;justify-content:center;width:clamp(40px,6.4dvh,54px);height:clamp(40px,6.4dvh,54px);flex-shrink:0;border:3px dashed #C23A7E;border-radius:14px;font-size:30px;font-weight:800;color:#C23A7E">?</span>';
+  const row=seq.slice(0,L).map(e=>`<span style="font-size:clamp(30px,calc(5.4*var(--vh)),46px);line-height:1">${e}</span>`).join('')+'<span class="blank" style="display:inline-flex;align-items:center;justify-content:center;width:clamp(40px,calc(6.4*var(--vh)),54px);height:clamp(40px,calc(6.4*var(--vh)),54px);flex-shrink:0;border:3px dashed #C23A7E;border-radius:14px;font-size:30px;font-weight:800;color:#C23A7E">?</span>';
   return mk({text:'Gambar apa yang berikutnya?',expr:'',ans,opts,fixed:true,noOpt:true,vis:{k:'html',html:`<div class="vis" style="gap:4px;flex-wrap:nowrap">${row}</div>`},speak:'Lihat polanya. Gambar apa yang berikutnya?',explain:'Polanya berulang: '+unit.join(' '),h1:'Lihat gambar yang berulang-ulang.',h2:'Ucapkan polanya keras-keras sambil menunjuk satu per satu.'}); }
 function bentukQ(lv){ const T=lv===8?pick(['name3','count','name','count2','corner','real','count2']):['name3','count','name','count2','corner','real','count2'][lv-1];
   const keys=Object.keys(SHP); const basic=['lingkaran','segitiga','persegi'];
   if(T==='name3'||T==='name'){ const pool=T==='name3'?basic:keys; const k=pick(pool); const opts=shuffle([k,...shuffle(pool.filter(x=>x!==k)).slice(0,T==='name3'?2:3)]).map(x=>SHP[x]);
-    return mk({text:'Bentuk apa ini?',expr:'',ans:SHP[k],opts,fixed:true,vis:{k:'html',html:`<div class="vis">${shapeSVG(k,pick(SHPCOL),'min(190px,25dvh)')}</div>`},speak:'Bentuk apa ini?',explain:`Ini bentuk ${SHP[k].toLowerCase()}.`,h1:k==='lingkaran'?'Bentuk ini bulat, tidak punya sudut.':k==='segitiga'?'Hitung sudutnya ada berapa.':'Lihat sisi dan sudutnya.',h2:'Coba gambar bentuknya di udara dengan jarimu.'}); }
+    return mk({text:'Bentuk apa ini?',expr:'',ans:SHP[k],opts,fixed:true,vis:{k:'html',html:`<div class="vis">${shapeSVG(k,pick(SHPCOL),'min(190px,calc(25*var(--vh)))')}</div>`},speak:'Bentuk apa ini?',explain:`Ini bentuk ${SHP[k].toLowerCase()}.`,h1:k==='lingkaran'?'Bentuk ini bulat, tidak punya sudut.':k==='segitiga'?'Hitung sudutnya ada berapa.':'Lihat sisi dan sudutnya.',h2:'Coba gambar bentuknya di udara dengan jarimu.'}); }
   if(T==='count'||T==='count2'){ const target=T==='count'?'segitiga':pick(keys); const n=R(1,T==='count'?4:5); const others=R(2,4); let arr=[]; for(let i=0;i<n;i++) arr.push(target); for(let i=0;i<others;i++) arr.push(pick(keys.filter(x=>x!==target))); arr=shuffle(arr);
-    const html=`<div class="vis" style="gap:8px;max-width:330px">${arr.map(k=>shapeSVG(k,pick(SHPCOL),'min(66px,8.5dvh)')).join('')}</div>`;
+    const html=`<div class="vis" style="gap:8px;max-width:330px">${arr.map(k=>shapeSVG(k,pick(SHPCOL),'min(66px,calc(8.5*var(--vh)))')).join('')}</div>`;
     return mk({text:`Ada berapa ${SHP[target].toLowerCase()}?`,expr:'',ans:n,opts:[n+1,n-1,n+2].filter(x=>x>=1),vis:{k:'html',html},speak:`Ada berapa ${SHP[target].toLowerCase()}? Hitung ya.`,explain:`Ada ${n} ${SHP[target].toLowerCase()}.`,h1:`Cari bentuk ${SHP[target].toLowerCase()} saja, abaikan bentuk lain.`,h2:'Tunjuk satu per satu sambil menghitung.'}); }
   if(T==='corner'){ const k=pick(['segitiga','persegi','panjang']); const n=k==='segitiga'?3:4;
-    return mk({text:`Berapa sudut ${SHP[k].toLowerCase()}?`,expr:'',ans:n,opts:[3,4,5,2],fixed:true,vis:{k:'html',html:`<div class="vis">${shapeSVG(k,pick(SHPCOL),'min(190px,25dvh)',true)}</div>`},explain:`${SHP[k]} punya ${n} sudut.`,h1:'Sudut adalah ujung yang lancip. Titik kuning menandai sudutnya.',h2:'Hitung titik kuningnya.'}); }
+    return mk({text:`Berapa sudut ${SHP[k].toLowerCase()}?`,expr:'',ans:n,opts:[3,4,5,2],fixed:true,vis:{k:'html',html:`<div class="vis">${shapeSVG(k,pick(SHPCOL),'min(190px,calc(25*var(--vh)))',true)}</div>`},explain:`${SHP[k]} punya ${n} sudut.`,h1:'Sudut adalah ujung yang lancip. Titik kuning menandai sudutnya.',h2:'Hitung titik kuningnya.'}); }
   const R6=[['🍪','lingkaran'],['🍕','segitiga'],['🎁','persegi'],['🚪','panjang'],['🍩','lingkaran'],['🧀','segitiga'],['📱','panjang'],['🎲','persegi'],['⭐','bintang'],['💖','hati'],['🕒','lingkaran'],['🖼️','persegi']];
   const [e,k]=pick(R6); const opts=shuffle([k,...shuffle(keys.filter(x=>x!==k)).slice(0,2)]).map(x=>SHP[x]);
-  return mk({text:'Benda ini berbentuk apa?',expr:'',ans:SHP[k],opts,fixed:true,vis:{k:'html',html:`<div class="vis"><span style="font-size:min(140px,17dvh);line-height:1">${e}</span></div>`},speak:'Benda ini berbentuk apa?',explain:`Bentuknya ${SHP[k].toLowerCase()}.`,h1:'Lihat garis luar bendanya.',h2:'Apakah bulat, ada 3 sudut, atau 4 sudut?'}); }
+  return mk({text:'Benda ini berbentuk apa?',expr:'',ans:SHP[k],opts,fixed:true,vis:{k:'html',html:`<div class="vis"><span style="font-size:min(140px,calc(17*var(--vh)));line-height:1">${e}</span></div>`},speak:'Benda ini berbentuk apa?',explain:`Bentuknya ${SHP[k].toLowerCase()}.`,h1:'Lihat garis luar bendanya.',h2:'Apakah bulat, ada 3 sudut, atau 4 sudut?'}); }
 function traceQ(n,withVis){ const ob=R(0,OBJS.length-1); const q={kind:'trace',digit:n,ans:String(n),opts:[],expr:'',text:withVis?objTxt('Hitung apelnya, lalu tulis angkanya!',ob):`Tebalkan angka ${n} dengan jarimu!`,speak:withVis?objTxt('Hitung apelnya, lalu tulis angkanya dengan jarimu.',ob):`Tebalkan angka ${ANGKA_KATA[n]} dengan jarimu.`,explain:`Ini angka ${n} (${ANGKA_KATA[n]}).`,h1:'Ikuti garis putus-putus dengan jarimu dari atas.',h2:'Tebalkan sampai seluruh angka berwarna pink.'};
   if(withVis) q.vis={k:'count',n,o:ob}; return q; }
 function tulisQ(lv){ const T=lv===8?pick(['t1','t2','t3','read','t0','cnt','read']):['t1','t2','t3','read','t0','cnt','read'][lv-1];
@@ -907,7 +911,7 @@ function handXY(len,deg){const a=deg*Math.PI/180;return [r1(50+len*Math.sin(a)),
 function clockDragSVG(h,m,locked){let nums='',ticks='';for(let i=1;i<=12;i++){const a=i*30*Math.PI/180;nums+=`<text x="${r1(50+37*Math.sin(a))}" y="${r1(50-37*Math.cos(a)+3.6)}" text-anchor="middle" font-size="10" font-weight="800" fill="#3B2A1A">${i}</text>`;}
   for(let i=0;i<60;i++){const a=i*6*Math.PI/180,q=i%5===0,ra=q?43:45;ticks+=`<line x1="${r1(50+ra*Math.sin(a))}" y1="${r1(50-ra*Math.cos(a))}" x2="${r1(50+47*Math.sin(a))}" y2="${r1(50-47*Math.cos(a))}" stroke="${q?'#8A7A5E':'#CFC3A8'}" stroke-width="${q?1.4:.6}"/>`;}
   const [hx,hy]=handXY(23,((h%12)+m/60)*30),[mx,my]=handXY(35,m*6);
-  return `<svg id="dragClock" class="dclock${locked?' locked':''}" width="min(210px,26dvh)" height="min(210px,26dvh)" viewBox="0 0 100 100" role="img" aria-label="Jam yang bisa diatur"><circle cx="50" cy="50" r="48" fill="#fff" stroke="#FF8A3D" stroke-width="3"/>${ticks}${nums}<line id="hHand" x1="50" y1="50" x2="${hx}" y2="${hy}" stroke="#E8475C" stroke-width="5" stroke-linecap="round"/><line id="mHand" x1="50" y1="50" x2="${mx}" y2="${my}" stroke="#2E9BE6" stroke-width="3.2" stroke-linecap="round"/><circle id="mKnob" cx="${mx}" cy="${my}" r="6.5" fill="#2E9BE6" stroke="#fff" stroke-width="2"/><circle cx="50" cy="50" r="3.4" fill="#3B2A1A"/></svg>`;}
+  return `<svg id="dragClock" class="dclock${locked?' locked':''}" width="min(210px,calc(26*var(--vh)))" height="min(210px,calc(26*var(--vh)))" viewBox="0 0 100 100" role="img" aria-label="Jam yang bisa diatur"><circle cx="50" cy="50" r="48" fill="#fff" stroke="#FF8A3D" stroke-width="3"/>${ticks}${nums}<line id="hHand" x1="50" y1="50" x2="${hx}" y2="${hy}" stroke="#E8475C" stroke-width="5" stroke-linecap="round"/><line id="mHand" x1="50" y1="50" x2="${mx}" y2="${my}" stroke="#2E9BE6" stroke-width="3.2" stroke-linecap="round"/><circle id="mKnob" cx="${mx}" cy="${my}" r="6.5" fill="#2E9BE6" stroke="#fff" stroke-width="2"/><circle cx="50" cy="50" r="3.4" fill="#3B2A1A"/></svg>`;}
 function updateClockHands(w){const hh=document.getElementById('hHand'),mh=document.getElementById('mHand'),mk=document.getElementById('mKnob'); if(!hh) return; const [hx,hy]=handXY(23,((w.h%12)+w.m/60)*30),[mx,my]=handXY(35,w.m*6); hh.setAttribute('x2',hx);hh.setAttribute('y2',hy);mh.setAttribute('x2',mx);mh.setAttribute('y2',my);mk.setAttribute('cx',mx);mk.setAttribute('cy',my);}
 function moneyChip(v,extra){ if(v<1000||(v===1000&&D.kelas===1)) return `<span class="coin${v>=500?' gold':''}"${extra||''}>${fmt(v)}</span>`; return `<span class="note" style="background:${NOTECOL[v]||'#ddd'}"${extra||''}><b>${fmt(v)}</b><small>RUPIAH</small></span>`;}
 /* --- Boss --- */
@@ -938,8 +942,8 @@ function visHTML(v,reveal,help){
   if(v.k==='arr'){let h='';for(let i=0;i<v.r;i++){for(let j=0;j<v.c;j++)h+='<i></i>';}return `<div class="vis"><div class="arr" style="grid-template-columns:repeat(${v.c},20px)">${h}</div>${help?`<div class="arr-sum">${Array.from({length:v.r},(_,i)=>`<span>${(i+1)*v.c}</span>`).join('')}</div>`:''}</div><div class="bcap">${v.r} baris, tiap baris ${v.c}</div>`;}
   if(v.k==='share'){const q=v.n/v.d;let pl='';for(let i=0;i<v.d;i++){pl+=`<div class="plate">${reveal?'<i></i>'.repeat(q):''}</div>`;}return `<div class="vis" style="flex-direction:column;gap:8px">${reveal?'':`<div class="grp" style="max-width:220px">${'<i style="width:16px;height:16px;border-radius:999px;background:#FF8A3D;display:block"></i>'.repeat(v.n)}</div>`}<div class="plates">${pl}</div></div><div class="bcap">${v.n} dibagi rata ke ${v.d} piring</div>`;}
   if(v.k==='place') return placeHTML(v.n,reveal||help);
-  if(v.k==='clock') return `<div class="vis">${clockSVG(v.h,v.m,'min(150px,19dvh)')}</div>`;
-  if(v.k==='clock2') return `<div class="vis" style="gap:14px"><div class="center">${clockSVG(v.h1,v.m1,'min(96px,12dvh)')}<div class="bcap">Mulai</div></div><div class="op" style="font-size:26px">→</div><div class="center">${clockSVG(v.h2,v.m2,'min(96px,12dvh)')}<div class="bcap">Selesai</div></div></div>`;
+  if(v.k==='clock') return `<div class="vis">${clockSVG(v.h,v.m,'min(150px,calc(19*var(--vh)))')}</div>`;
+  if(v.k==='clock2') return `<div class="vis" style="gap:14px"><div class="center">${clockSVG(v.h1,v.m1,'min(96px,calc(12*var(--vh)))')}<div class="bcap">Mulai</div></div><div class="op" style="font-size:26px">→</div><div class="center">${clockSVG(v.h2,v.m2,'min(96px,calc(12*var(--vh)))')}<div class="bcap">Selesai</div></div></div>`;
   if(v.k==='money') return moneyHTML(v.items);
   if(v.k==='ruler') return `<div class="vis">${rulerSVG(v,help||reveal)}</div>`;
   return '';
@@ -974,11 +978,19 @@ function setupTrace(){ const cv=document.getElementById('trace'); const g=S.game
     w.cov=cT?cH/cT:0; w.out=iT?iO/iT:0; }
   draw(); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>{ if(document.getElementById('trace')===cv) draw(); });
   if(g.picked!=null) return;
-  let cur=null; const pos=e=>{const r=cv.getBoundingClientRect();return [e.clientX-r.left,e.clientY-r.top];};
+  let cur=null; const pos=e=>{const r=cv.getBoundingClientRect();return [(e.clientX-r.left)*W/r.width,(e.clientY-r.top)*H/r.height];};
   cv.addEventListener('pointerdown',e=>{e.preventDefault(); try{cv.setPointerCapture(e.pointerId);}catch(_){} cur=[pos(e)]; w.strokes.push(cur); draw();});
   cv.addEventListener('pointermove',e=>{ if(!cur) return; e.preventDefault(); cur.push(pos(e)); draw();});
   const end=()=>{ if(!cur) return; cur=null; const before=w.cov>=0.3; score(); if((w.cov>=0.3)!==before||true){ render(); } };
   cv.addEventListener('pointerup',end); cv.addEventListener('pointercancel',end); }
+
+let SCALE=1;
+function fitScreen(){ const vv=window.visualViewport; const W=Math.round(vv?vv.width:innerWidth), H=Math.round(vv?vv.height:innerHeight); const app=document.getElementById('app'), de=document.documentElement; if(!app) return;
+  const land=W>H*1.1; let s=1; if(W>=600&&H>=500) s=land?Math.max(1,H/620):Math.max(1,Math.min(W/430,H/700));
+  if(s>1.02){ const lw=land?Math.min(W/s,640):W/s, lh=H/s; SCALE=s; de.classList.add('fit'); de.style.setProperty('--vh',(lh/100)+'px'); de.style.setProperty('--vw',(lw/100)+'px');
+    app.style.width=lw+'px'; app.style.height=lh+'px'; app.style.left=((W-lw*s)/2)+'px'; app.style.transform=`scale(${s})`; app.style.boxShadow=land?'0 0 60px rgba(107,45,92,.18)':''; }
+  else { SCALE=1; de.classList.remove('fit'); de.style.removeProperty('--vh'); de.style.removeProperty('--vw'); app.style.width=''; app.style.height=''; app.style.transform=''; app.style.left=''; app.style.boxShadow=''; } }
+fitScreen(); window.addEventListener('resize',fitScreen); if(window.visualViewport) visualViewport.addEventListener('resize',fitScreen); window.addEventListener('orientationchange',()=>setTimeout(fitScreen,200));
 let LAST_SCR=null; const SCROLL_SEL='.screen,.album,.shop,.shop-row,.lesson-tabs,.grid-stk,.qcard';
 function render(){ const keep=[]; const scrKey=S.screen+'|'+(S.screen==='collection'?S.colTab:'')+'|'+(S.screen==='learn'&&S.lesson?S.lesson.type:''); if(LAST_SCR===scrKey){ app.querySelectorAll(SCROLL_SEL).forEach((el,i)=>keep.push([i,el.scrollTop,el.scrollLeft])); } LAST_SCR=scrKey;
   app.innerHTML=(VIEWS[S.screen]||VIEWS.map)()+(S.modal?S.modal():''); if(keep.length){ const els=app.querySelectorAll(SCROLL_SEL); keep.forEach(([i,top,left])=>{ const el=els[i]; if(el){ el.scrollTop=top; el.scrollLeft=left; } }); } try{setupTrace();}catch(e){} const f=app.querySelector('[autofocus]'); if(f) try{f.focus();}catch(e){} }
@@ -1152,7 +1164,7 @@ VIEWS.play=()=>{const g=S.game,q=g.q,boss=g.lv===8;
   let mainHTML='',trayHTML='';
   if(q.kind){ const it=interactiveHTML(q,g,answered); mainHTML=it.main; trayHTML=it.tray; }
   else { const opts=q.opts.map((v,i)=>{let c='opt'; const isAns=String(v)===String(q.ans); if(answered){ if(isAns) c+=' ok'; else if(i===g.picked) c+=' bad'; else c+=' dim'; } else if(g.sel===i) c+=' sel';
-      const label=disp(v,q); return `<button class="${c}" data-act="choose" data-arg="${i}" ${answered?'aria-disabled="true"':`aria-pressed="${g.sel===i}"`} style="${label.length>9?'font-size:clamp(17px,2.6dvh,21px)':label.length>5?'font-size:clamp(22px,3.4dvh,28px)':''}">${esc(label)}</button>`;}).join('');
+      const label=disp(v,q); return `<button class="${c}" data-act="choose" data-arg="${i}" ${answered?'aria-disabled="true"':`aria-pressed="${g.sel===i}"`} style="${label.length>9?'font-size:clamp(17px,calc(2.6*var(--vh)),21px)':label.length>5?'font-size:clamp(22px,calc(3.4*var(--vh)),28px)':''}">${esc(label)}</button>`;}).join('');
     const sh3=q.opts.length===3&&q.opts.every(v=>String(disp(v,q)).length<=4); trayHTML=`<div class="opts${q.opts.length===2?' two':q.opts.length===3?(sh3?' three':' three-wide'):''}" role="group" aria-label="Pilihan jawaban">${opts}</div>`; }
   let fb='';
   const ansShown=q.kind?q.ans:disp(q.ans,q);
@@ -1187,7 +1199,7 @@ VIEWS.result=()=>{const r=S.result;const win=r.win;
      <span class="badge" style="width:50px;height:50px;background:${S.stickerOpen?'#fff':'#E8475C'};font-size:32px">${S.stickerOpen?STICKERS[r.sticker]:svgI.gift}</span>
      <span><span style="display:block;font-size:19px;font-weight:800">${S.stickerOpen?'Stiker baru!':'Ada hadiah untukmu!'}</span><span style="display:block;font-size:14px;font-weight:600" class="muted">${S.stickerOpen?'Sudah masuk ke koleksimu':'Ketuk untuk membuka'}</span></span></button>`; }
   return `<div class="screen nonav" style="background:${win?'#FFD66B':'#FFE3C2'};align-items:center;padding:0 20px">
-   <div class="center" style="margin-top:calc(18px + env(safe-area-inset-top))"><div style="font-size:16px;font-weight:700;color:#6B4A00">Level ${r.lv} · ${lvName(r.isl,r.lv)}</div><div class="h1" style="font-size:clamp(30px,4.8dvh,40px)">${r.title}</div></div>
+   <div class="center" style="margin-top:calc(18px + env(safe-area-inset-top))"><div style="font-size:16px;font-weight:700;color:#6B4A00">Level ${r.lv} · ${lvName(r.isl,r.lv)}</div><div class="h1" style="font-size:clamp(30px,calc(4.8*var(--vh)),40px)">${r.title}</div></div>
    ${win?`<div style="display:flex;align-items:flex-end;gap:6px;margin-top:8px">${[0,1,2].map(i=>`<span class="star-pop" style="animation-delay:${.2+i*.25}s">${starIco(i===1?64:48,i<r.stars)}</span>`).join('')}</div><div style="font-size:16px;font-weight:700;margin-top:2px">${r.stars===3?'3 bintang! Sempurna!':r.stars===2?'2 bintang! Hampir sempurna':'1 bintang! Terus berlatih ya'}</div>`:`<div style="font-size:16px;font-weight:700;margin-top:8px;text-align:center">Nyawamu habis. Tidak apa-apa, belajar itu memang pelan-pelan!</div>`}
    <div class="grow" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;align-self:stretch;min-height:0">${chest?prize:`<div style="height:100%;max-height:120px;min-height:56px;aspect-ratio:1">${kiko('100%',win?'happy':'sad',null,win?'k-dance':'k-sad')}</div>`}</div>
    <div class="card" style="--sh:#E0A92A;align-self:stretch;margin-top:6px;padding:10px;display:grid;grid-template-columns:repeat(3,1fr);text-align:center">
@@ -1239,7 +1251,7 @@ function lessonBody(L){const t=L.type,e=L.ex,s=L.step;let vis='',txt='',eq=''; i
     vis=s>=1?placeHTML(e.n):`<div style="font-size:64px;font-weight:800">${fmt(e.n)}</div>`;
     txt=[`Kita bongkar angka ${fmt(e.n)}.`,`Batang biru = 10 (puluhan), kotak hijau kecil = 1 (satuan)${h?', kotak merah besar = 100 (ratusan)':''}.`,`${fmt(e.n)} = ${h?h+' ratusan + ':''}${tt} puluhan + ${o} satuan`][s];
     eq=s===2?`${fmt(e.n)} = ${h?fmt(h*100)+' + ':''}${tt*10} + ${o}`:''; }
-  if(t==='jam'){ vis=`<div class="vis">${clockSVG(e.h,e.m,'min(160px,20dvh)')}</div>`;
+  if(t==='jam'){ vis=`<div class="vis">${clockSVG(e.h,e.m,'min(160px,calc(20*var(--vh)))')}</div>`;
     txt=[`Jarum pendek berwarna merah menunjuk JAM. Sekarang jarum pendek dekat angka ${e.h}.`,e.m===0?'Jarum panjang berwarna biru menunjuk MENIT. Jarum panjang di angka 12 artinya tepat, 00 menit.':`Jarum panjang berwarna biru menunjuk MENIT. Setiap angka = 5 menit, jadi jarum panjang di angka ${e.m/5} artinya ${e.m} menit.`,`Jadi sekarang jam ${tStr(e.h,e.m)}.`][s];
     eq=s===2?tStr(e.h,e.m):''; }
   if(t==='uang'){ const shown=s===0?e.items:e.items; let run=0; const parts=e.items.slice(0,s).map(v=>rp(run+=v));
@@ -1552,8 +1564,8 @@ function clockMove(e){const g=S.game; if(!CLK||!g||!g.work) return; const r=CLK.
 window.addEventListener('pointermove',e=>{
   if(CLK){ clockMove(e); e.preventDefault(); return; }
   if(!DRAG) return; const dx=e.clientX-DRAG.x,dy=e.clientY-DRAG.y;
-  if(!DRAG.moved&&Math.hypot(dx,dy)>8){ DRAG.moved=true; const r=DRAG.el.getBoundingClientRect(); const gh=DRAG.el.cloneNode(true); gh.classList.add('ghost'); gh.removeAttribute('data-act'); gh.style.position='fixed'; gh.style.left=r.left+'px'; gh.style.top=r.top+'px'; gh.style.width=r.width+'px'; gh.style.height=r.height+'px'; gh.style.margin='0'; gh.style.pointerEvents='none'; gh.style.zIndex='500'; document.body.appendChild(gh); DRAG.ghost=gh; }
-  if(DRAG.moved){ e.preventDefault(); DRAG.ghost.style.transform=`translate(${dx}px,${dy}px) scale(1.1) rotate(-4deg)`; document.querySelectorAll('[data-drop].over').forEach(x=>x.classList.remove('over')); const z=dropAt(e.clientX,e.clientY); if(z) z.classList.add('over'); } },{passive:false});
+  if(!DRAG.moved&&Math.hypot(dx,dy)>8){ DRAG.moved=true; const r=DRAG.el.getBoundingClientRect(); const gh=DRAG.el.cloneNode(true); gh.classList.add('ghost'); gh.removeAttribute('data-act'); gh.style.position='fixed'; gh.style.left=r.left+'px'; gh.style.top=r.top+'px'; gh.style.width=(r.width/SCALE)+'px'; gh.style.height=(r.height/SCALE)+'px'; gh.style.transformOrigin='0 0'; gh.style.margin='0'; gh.style.pointerEvents='none'; gh.style.zIndex='500'; document.body.appendChild(gh); DRAG.ghost=gh; }
+  if(DRAG.moved){ e.preventDefault(); DRAG.ghost.style.transform=`translate(${dx}px,${dy}px) scale(${1.1*SCALE}) rotate(-4deg)`; document.querySelectorAll('[data-drop].over').forEach(x=>x.classList.remove('over')); const z=dropAt(e.clientX,e.clientY); if(z) z.classList.add('over'); } },{passive:false});
 window.addEventListener('pointerup',e=>{
   if(CLK){ CLK=null; render(); return; }
   if(!DRAG) return; const d=DRAG; DRAG=null; if(!d.moved) return; if(d.ghost) d.ghost.remove(); document.querySelectorAll('[data-drop].over').forEach(x=>x.classList.remove('over'));
